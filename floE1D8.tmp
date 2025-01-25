@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccjf5ty5kv6xo"]
+
+[ext_resource type="Script" path="res://floating_number.gd" id="1_kqknl"]
+[ext_resource type="FontFile" uid="uid://mg5hwwdge1gw" path="res://fonts/PixelOperator8.ttf" id="1_pcesh"]
+[ext_resource type="FontFile" uid="uid://bvs6i5gvcgj4e" path="res://fonts/PixelOperator8-Bold.ttf" id="3_pnfuc"]
+
+[sub_resource type="Animation" id="Animation_0ok5e"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.0980731, 0.0824694, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_610x4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j38l6"]
+_data = {
+"RESET": SubResource("Animation_610x4"),
+"fade_out": SubResource("Animation_0ok5e")
+}
+
+[node name="FloatingNumber" type="Node2D"]
+z_index = 10
+script = ExtResource("1_kqknl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+offset_left = -22.0
+offset_top = -10.0
+offset_right = 18.0
+offset_bottom = 30.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_pcesh")
+theme_override_fonts/bold_font = ExtResource("3_pnfuc")
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[b][rainbow freq=1.0 sat=0.8 val=0.8][wave amp=50.0 freq=5.0 connected=1]+10[/wave][/rainbow][/b]"
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j38l6")
+}
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

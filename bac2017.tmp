@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhnjmcbtq0evg"]
+
+[ext_resource type="Texture2D" uid="uid://ppciecbg48v1" path="res://Assets/background/bottom-background.png" id="1_re6eh"]
+[ext_resource type="Texture2D" uid="uid://b5iktg3w2tote" path="res://Assets/background/JapaneseLanter.png" id="2_r2tus"]
+[ext_resource type="Texture2D" uid="uid://bcfdwgrexhlwb" path="res://Assets/background/top-background.png" id="2_x4py5"]
+[ext_resource type="Script" path="res://pin_joint_2d.gd" id="4_7dsv7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xfrvb"]
+radius = 109.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl04p"]
+
+[node name="Background" type="Node2D"]
+
+[node name="Back" type="Sprite2D" parent="."]
+texture = ExtResource("1_re6eh")
+centered = false
+
+[node name="Lanterns2" type="Sprite2D" parent="."]
+position = Vector2(1760, 336)
+texture = ExtResource("2_r2tus")
+
+[node name="Front" type="Sprite2D" parent="."]
+texture = ExtResource("2_x4py5")
+centered = false
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(552, 128)
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../InvisibleHook")
+motor_enabled = true
+script = ExtResource("4_7dsv7")
+
+[node name="Timer" type="Timer" parent="PinJoint2D"]
+one_shot = true
+autostart = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(552, 288)
+mass = 0.1
+
+[node name="Lanterns" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("2_r2tus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_xfrvb")
+
+[node name="InvisibleHook" type="StaticBody2D" parent="."]
+position = Vector2(552, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleHook"]
+shape = SubResource("RectangleShape2D_fl04p")
+
+[connection signal="timeout" from="PinJoint2D/Timer" to="PinJoint2D" method="_on_timer_timeout"]

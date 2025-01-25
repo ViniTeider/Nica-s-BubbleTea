@@ -1,0 +1,38 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="ShowTheBalls"
+run/main_scene="res://main.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Utils="*res://Scripts/utils.gd"
+Globals="*res://Scripts/globals.gd"
+SignalBus="*res://Scripts/signal_bus.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
+[global_group]
+
+cup1="bubbles attached to cup1"
+cup2="bubbles attached to cup2"
+ball1="ball1"
+ball2="ball2"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

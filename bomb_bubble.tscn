@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnfsq7bohrxnr"]
+
+[ext_resource type="PackedScene" uid="uid://uj8akm32t0li" path="res://key_bubble.tscn" id="1_h85n1"]
+[ext_resource type="Script" path="res://Scripts/bomb_bubble.gd" id="2_8cpso"]
+
+[node name="BombBubble" instance=ExtResource("1_h85n1")]
+script = ExtResource("2_8cpso")

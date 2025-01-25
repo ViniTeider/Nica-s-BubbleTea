@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://4ivstbxsubpm"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_43mje"]
+[ext_resource type="PackedScene" uid="uid://bhnjmcbtq0evg" path="res://background.tscn" id="2_hiw6f"]
+[ext_resource type="FontFile" uid="uid://mg5hwwdge1gw" path="res://fonts/PixelOperator8.ttf" id="3_6wvda"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh54s"]
+size = Vector2(1849, 74)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("score_player_1", "score_player_2")]
+script = ExtResource("1_43mje")
+score_player_1 = NodePath("CanvasLayer/ScorePlayer1")
+score_player_2 = NodePath("CanvasLayer/ScorePlayer2")
+
+[node name="Cup1Marker" type="Marker2D" parent="."]
+position = Vector2(488, 663)
+
+[node name="Cup2Marker" type="Marker2D" parent="."]
+position = Vector2(1448, 660)
+
+[node name="BubbleKeySpawn" type="Timer" parent="."]
+wait_time = 1.592
+autostart = true
+
+[node name="Background" parent="." instance=ExtResource("2_hiw6f")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScorePlayer1" type="Label" parent="CanvasLayer"]
+offset_left = 440.0
+offset_top = 848.0
+offset_right = 480.0
+offset_bottom = 871.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_6wvda")
+horizontal_alignment = 1
+
+[node name="ScorePlayer2" type="Label" parent="CanvasLayer"]
+offset_left = 1408.0
+offset_top = 840.0
+offset_right = 1448.0
+offset_bottom = 863.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_6wvda")
+horizontal_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(936, 840)
+shape = SubResource("RectangleShape2D_vh54s")
+
+[connection signal="timeout" from="BubbleKeySpawn" to="." method="_on_bubble_key_spawn_timeout"]

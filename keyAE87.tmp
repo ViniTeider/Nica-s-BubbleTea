@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://uj8akm32t0li"]
+
+[ext_resource type="Script" path="res://key_bubble.gd" id="1_cun3v"]
+
+[node name="KeyBubble" type="Node2D" node_paths=PackedStringArray("key_bubble_sprite")]
+script = ExtResource("1_cun3v")
+key_bubble_sprite = NodePath("BallSprite_2D")
+
+[node name="BallSprite_2D" type="Sprite2D" parent="."]
+
+[node name="BubbleSprite_2D" type="Sprite2D" parent="."]
