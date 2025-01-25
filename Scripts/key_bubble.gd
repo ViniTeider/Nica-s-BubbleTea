@@ -21,7 +21,6 @@ var parent: Cup
 var new_size: float
 var bubble_sprites = [BUBBLE_1, BUBBLE_2, BUBBLE_3, BUBBLE_4, BUBBLE_5, BUBBLE_6, BUBBLE_7, BUBBLE_8, BUBBLE_9, BUBBLE_10, BUBBLE_11]
 var bubble_sprite
-var bubble_scale_multiplier: float = randf_range(1, 1.1)
 var rotating_side: int
 
 func _ready() -> void:

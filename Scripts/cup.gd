@@ -8,7 +8,6 @@ class_name Cup
 
 @onready var right_limit: Marker2D = $RightLimit
 @onready var left_limit: Marker2D = $LeftLimit
-
 @onready var cup_fill: AnimatedSprite2D = $CupFill
 
 # Loads the textures for the Key_Bubble sprites
@@ -92,12 +91,17 @@ func spawn_key_bubble() -> void:
 	if chosen_key == -1: 
 		return
 	
-	
 	var key_bubble: KeyBubble
+	var current_key_bubble_type: BUBBLE_TYPE
 	
-	key_bubble = Utils.key_bubble_scn.instantiate()
-	print(chosen_key)
-	set_key_bubble_sprite(key_bubble, chosen_key)
+	if randf() < 0.5: 
+		current_key_bubble_type = BUBBLE_TYPE.BOMB
+		key_bubble = Utils.bomb_bubble_scn.instantiate()
+		set_key_bubble_sprite(key_bubble, chosen_key, true)
+	else:
+		current_key_bubble_type = BUBBLE_TYPE.NORMAL
+		key_bubble = Utils.key_bubble_scn.instantiate()
+		set_key_bubble_sprite(key_bubble, chosen_key)
 	
 	key_bubble.key = chosen_key
 	key_bubble.parent = self
@@ -124,9 +128,12 @@ func generateRandomKey() -> int:
 	
 	return chosen_key
 	
-func set_key_bubble_sprite(key_bubble: KeyBubble, key: int) -> void:
+func set_key_bubble_sprite(key_bubble: KeyBubble, key: int, isBomb: bool = false) -> void:
 	# # Z = 90, X = 88, C = 67, A = 65, S = 83, D = 68
 	# U = 85, I = 73, O = 79, J = 74, K = 75, L = 76
+	
+	if isBomb:
+		key += 100
 	
 	match key:
 		# Player 1
@@ -157,33 +164,33 @@ func set_key_bubble_sprite(key_bubble: KeyBubble, key: int) -> void:
 		76:
 			key_bubble.key_bubble_sprite.set_texture(L)
 		
-		## Bomb Player 1
-		#190:
-			#key_bubble.key_bubble_sprite.set_texture(Z_BOMB)
-		#188:
-			#key_bubble.key_bubble_sprite.set_texture(X_BOMB)
-		#167:
-			#key_bubble.key_bubble_sprite.set_texture(C_BOMB)
-		#165:
-			#key_bubble.key_bubble_sprite.set_texture(A_BOMB)
-		#183:
-			#key_bubble.key_bubble_sprite.set_texture(S_BOMB)
-		#168:
-			#key_bubble.key_bubble_sprite.set_texture(D_BOMB)
-		#
-		## Bomb Player 2
-		#185:
-			#key_bubble.key_bubble_sprite.set_texture(U_BOMB)
-		#173:
-			#key_bubble.key_bubble_sprite.set_texture(I_BOMB)
-		#179:
-			#key_bubble.key_bubble_sprite.set_texture(O_BOMB)
-		#174:
-			#key_bubble.key_bubble_sprite.set_texture(J_BOMB)
-		#175:
-			#key_bubble.key_bubble_sprite.set_texture(K_BOMB)
-		#176:
-			#key_bubble.key_bubble_sprite.set_texture(L_BOMB)
+		# Bomb Player 1
+		190:
+			key_bubble.key_bubble_sprite.set_texture(Z_BOMB)
+		188:
+			key_bubble.key_bubble_sprite.set_texture(X_BOMB)
+		167:
+			key_bubble.key_bubble_sprite.set_texture(C_BOMB)
+		165:
+			key_bubble.key_bubble_sprite.set_texture(A_BOMB)
+		183:
+			key_bubble.key_bubble_sprite.set_texture(S_BOMB)
+		168:
+			key_bubble.key_bubble_sprite.set_texture(D_BOMB)
+		
+		# Bomb Player 2
+		185:
+			key_bubble.key_bubble_sprite.set_texture(U_BOMB)
+		173:
+			key_bubble.key_bubble_sprite.set_texture(I_BOMB)
+		179:
+			key_bubble.key_bubble_sprite.set_texture(O_BOMB)
+		174:
+			key_bubble.key_bubble_sprite.set_texture(J_BOMB)
+		175:
+			key_bubble.key_bubble_sprite.set_texture(K_BOMB)
+		176:
+			key_bubble.key_bubble_sprite.set_texture(L_BOMB)
 			
 func fill() -> void:
 	cup_fill.play("Filling")
