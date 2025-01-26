@@ -1,8 +1,5 @@
 extends Node
 
-func _ready() -> void:
-	seed(5)
-
 # Scenes
 var ball_scn: PackedScene = preload('res://teabubble_scene.tscn')
 var specialball_scn: PackedScene = preload("res://ball_special.tscn")
@@ -14,7 +11,7 @@ const bomb_bubble_scn: PackedScene = preload("res://bomb_bubble.tscn")
 const special_keys_scn = preload("res://special_keys.tscn")
 const main_scn = preload("res://main.tscn")
 const camerao_scn = preload("res://camerao.tscn")
-
+const restart_sign_scn = preload("res://restart_sign.tscn")
 
 # Constants
 #const P1_KEYS: Array = [KEY_Q, KEY_W, KEY_E, KEY_A, KEY_S, KEY_D] # Q = 81, W = 87, E = 69, A = 65, S = 83, D = 68

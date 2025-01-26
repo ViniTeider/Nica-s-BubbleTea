@@ -13,6 +13,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	setup_game()
+
+func setup_game() -> void:
 	# Initializates the cups
 	var cup1: Cup = Utils.cup_scn.instantiate()
 	var cup2: Cup = Utils.cup_scn.instantiate()
@@ -52,20 +55,26 @@ func _on_win(winner: Cup) -> void:
 	bubble_key_spawn.autostart = false
 	bubble_key_spawn.stop()
 	
-	print(winner.name + " VENCEU !!!")
+	special_ball_timer.autostart = false
+	special_ball_timer.stop()
 	
 	var force = Vector2(randf_range(-300, 300), -300)
-	
-	
+	var winner_text = ""
 	if Globals.P1_cup != winner:
 		Globals.P2_cup.fill()
 		get_tree().call_group("ball1", "apply_force", force)
 		get_tree().call_group("ball1", "evaporate")
+		winner_text = " Player 2 "
 		
 	elif Globals.P2_cup != winner:
 		Globals.P1_cup.fill()
 		get_tree().call_group("ball2", "apply_force", force)
 		get_tree().call_group("ball2", "evaporate")
+		winner_text = " Player 1 "
+		
+	var restart_sign = Utils.restart_sign_scn.instantiate()
+	restart_sign.set_text(winner_text)
+	Utils.add_main(restart_sign)
 
 func _on_special_ball_timer_timeout() -> void:
 	var special_keys = Utils.special_keys_scn.instantiate()

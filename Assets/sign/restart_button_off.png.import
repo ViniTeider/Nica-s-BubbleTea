@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c674m1yowqya6"
-path="res://.godot/imported/bottom-background.png-07798b42b024e7bfdada289a511d017c.ctex"
+uid="uid://bqkyhome1t2vs"
+path="res://.godot/imported/restart_button_off.png-f472df1c00b39875b4f0a93c6d1b63e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/background/bottom-background.png"
-dest_files=["res://.godot/imported/bottom-background.png-07798b42b024e7bfdada289a511d017c.ctex"]
+source_file="res://Assets/sign/restart_button_off.png"
+dest_files=["res://.godot/imported/restart_button_off.png-f472df1c00b39875b4f0a93c6d1b63e3.ctex"]
 
 [params]
 

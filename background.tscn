@@ -1,11 +1,13 @@
-[gd_scene load_steps=52 format=3 uid="uid://bhnjmcbtq0evg"]
+[gd_scene load_steps=57 format=3 uid="uid://bhnjmcbtq0evg"]
 
-[ext_resource type="Texture2D" uid="uid://ppciecbg48v1" path="res://Assets/background/bottom-background.png" id="1_re6eh"]
+[ext_resource type="Texture2D" uid="uid://c674m1yowqya6" path="res://Assets/background/bottom-background.png" id="1_re6eh"]
 [ext_resource type="Texture2D" uid="uid://cgm3tuxnn37e" path="res://Assets/NicaBlinking/nicaBlink1.png" id="2_oida2"]
 [ext_resource type="Texture2D" uid="uid://dy75sfyu148dk" path="res://Assets/sign/bubbleSign-export1.png" id="2_qyu4x"]
 [ext_resource type="Texture2D" uid="uid://b5iktg3w2tote" path="res://Assets/background/JapaneseLanter.png" id="2_r2tus"]
+[ext_resource type="Texture2D" uid="uid://doxum5we87oyb" path="res://Assets/background/clouds-background.png" id="2_u30e6"]
 [ext_resource type="Texture2D" uid="uid://bcfdwgrexhlwb" path="res://Assets/background/top-background.png" id="2_x4py5"]
 [ext_resource type="Texture2D" uid="uid://b8ow2s5dyt122" path="res://Assets/sign/bubbleSign-export2.png" id="3_3ggi4"]
+[ext_resource type="Texture2D" uid="uid://s7m2y2angogq" path="res://Assets/background/details-background.png" id="3_3wi7s"]
 [ext_resource type="Texture2D" uid="uid://351wxtcw3x3k" path="res://Assets/NicaBlinking/nicaBlink2.png" id="3_rfok5"]
 [ext_resource type="Script" path="res://Scripts/pin_joint_2d.gd" id="4_7dsv7"]
 [ext_resource type="Texture2D" uid="uid://dk6ov8ghvpjb7" path="res://Assets/NicaBlinking/nicaBlink3.png" id="4_n307l"]
@@ -44,6 +46,44 @@
 [ext_resource type="Texture2D" uid="uid://c58nmcnmfa3fx" path="res://Assets/thiaguinho/tiaguinho-export12.png" id="26_ke01e"]
 [ext_resource type="Texture2D" uid="uid://bt87aealk2ost" path="res://Assets/WantWant/Sprite-0022.png" id="43_8o5ft"]
 [ext_resource type="Texture2D" uid="uid://da1n4lxigf2qv" path="res://Assets/WantWant/Sprite-0023.png" id="44_1lpsg"]
+
+[sub_resource type="Animation" id="Animation_dg120"]
+resource_name = "clouds"
+length = 25.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 19.9667, 25),
+"transitions": PackedFloat32Array(1, 0.017337, 0.00157586),
+"update": 0,
+"values": [Vector2(-704, 640), Vector2(2896, 640), Vector2(2896, 640)]
+}
+
+[sub_resource type="Animation" id="Animation_6egll"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2256, 640)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dygtm"]
+_data = {
+"RESET": SubResource("Animation_6egll"),
+"clouds": SubResource("Animation_dg120")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hj1b8"]
 animations = [{
@@ -250,8 +290,22 @@ animations = [{
 
 [node name="Background" type="Node2D"]
 
-[node name="Back" type="Sprite2D" parent="."]
+[node name="Bottom" type="Sprite2D" parent="."]
+position = Vector2(960, 544)
 texture = ExtResource("1_re6eh")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+position = Vector2(2256, 640)
+texture = ExtResource("2_u30e6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Clouds"]
+libraries = {
+"": SubResource("AnimationLibrary_dygtm")
+}
+autoplay = "clouds"
+
+[node name="Back" type="Sprite2D" parent="."]
+texture = ExtResource("3_3wi7s")
 centered = false
 
 [node name="Sign" type="AnimatedSprite2D" parent="."]

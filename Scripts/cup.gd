@@ -68,7 +68,7 @@ func _ready() -> void:
 	bubble_queue = cup_keys.duplicate()
 	
 func _process(_delta: float) -> void:
-	if score >= 50 and not closed:
+	if score >= 60 and not closed:
 		SignalBus.win.emit(self)
 		closed = true
 		

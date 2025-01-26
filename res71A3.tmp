@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://crqtksl0swc6f"]
+
+[ext_resource type="Script" path="res://restart_sign.gd" id="1_hpggo"]
+[ext_resource type="Texture2D" uid="uid://bqkyhome1t2vs" path="res://Assets/sign/restart_button_off.png" id="2_356kk"]
+[ext_resource type="Texture2D" uid="uid://fxvviasm32d5" path="res://Assets/sign/restart_button.png" id="2_u0r1f"]
+[ext_resource type="FontFile" uid="uid://bvs6i5gvcgj4e" path="res://fonts/PixelOperator8-Bold.ttf" id="3_35qnv"]
+
+[sub_resource type="Animation" id="Animation_f7ver"]
+resource_name = "chegando"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(8, -288), Vector2(24, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_5nid0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -288)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eem4p"]
+_data = {
+"RESET": SubResource("Animation_5nid0"),
+"chegando": SubResource("Animation_f7ver")
+}
+
+[node name="RestartSign" type="Node2D"]
+position = Vector2(8, -288)
+script = ExtResource("1_hpggo")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_356kk")
+texture_pressed = ExtResource("2_u0r1f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 136.0
+offset_top = 232.0
+offset_right = 390.0
+offset_bottom = 255.0
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/bold_font = ExtResource("3_35qnv")
+bbcode_enabled = true
+text = "O jogador joao marcos GANHOU "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eem4p")
+}
