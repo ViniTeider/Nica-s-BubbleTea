@@ -34,6 +34,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # called when you successfully hit the according KEY
 func hit(cup: Cup) -> void:
+	GlobalAudio.play_random_bubble()
+
 	var txt = Utils.floating_text_scn.instantiate()
 	txt.global_position = global_position
 	txt.set_special()

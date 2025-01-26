@@ -9,6 +9,7 @@ func error() -> void:
 	explode()
 
 func explode() -> void:
+	GlobalAudio.bomb_exploding_sound()
 	if parent.id == 1:
 		Globals.P1_score -= 5
 		Globals.P1_cup.score -= 5
