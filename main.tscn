@@ -11,6 +11,8 @@ size = Vector2(1849, 74)
 script = ExtResource("1_43mje")
 score_player_1 = NodePath("CanvasLayer/ScorePlayer1")
 score_player_2 = NodePath("CanvasLayer/ScorePlayer2")
+special_timer_low = 15
+special_timer_high = 30
 
 [node name="Cup1Marker" type="Marker2D" parent="."]
 position = Vector2(488, 663)

@@ -7,8 +7,11 @@ const RABBIT_BALL = preload("res://Assets/SpecialBalls/rabbit_ball.png")
 const NICA_BALL = preload("res://Assets/SpecialBalls/nicaBall.png")
 const ASE_BALL = preload("res://Assets/SpecialBalls/aseBall.png")
 const GODOT_BALL = preload("res://Assets/SpecialBalls/godot_ball.png")
+const LUCKY_BALL = preload("res://Assets/SpecialBalls/luckyBall.png")
+const MONKEY_BALL = preload("res://Assets/SpecialBalls/monkeyBall.png")
+const LANTERN_BALL = preload("res://Assets/SpecialBalls/lantern_ball.png")
 
-var sprites = [CAPY_BALL, GOOFY_BALL, RABBIT_BALL, NICA_BALL, ASE_BALL, GODOT_BALL]
+var sprites = [CAPY_BALL, GOOFY_BALL, RABBIT_BALL, NICA_BALL, ASE_BALL, GODOT_BALL, LUCKY_BALL, MONKEY_BALL, LANTERN_BALL]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
