@@ -20,7 +20,11 @@ config/icon="res://icon.svg"
 Utils="*res://Scripts/utils.gd"
 Globals="*res://Scripts/globals.gd"
 SignalBus="*res://Scripts/signal_bus.gd"
+
+GlobalAudio="*res://GlobalAudio.tscn"
+GlobalMusic="*res://GlobalMusic.tscn"
 Camera="*res://camera.gd"
+
 
 [display]
 
