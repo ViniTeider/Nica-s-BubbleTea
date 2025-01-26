@@ -5,6 +5,7 @@ func _ready() -> void:
 
 # Scenes
 var ball_scn: PackedScene = preload('res://teabubble_scene.tscn')
+var specialball_scn: PackedScene = preload("res://ball_special.tscn")
 var key_bubble_scn: PackedScene = preload("res://key_bubble.tscn")
 var cup_scn: PackedScene = preload("res://cup_scene.tscn")
 var floating_text_scn: PackedScene = preload("res://floating_number.tscn")

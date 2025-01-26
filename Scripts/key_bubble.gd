@@ -31,7 +31,7 @@ func _ready() -> void:
 		rotating_side = 1
 	else:
 		rotating_side = -1
-	
+
 func _process(delta: float) -> void:
 	bubble_sprite_2d.rotation_degrees += randf_range(15, 30) * rotating_side * delta
 
@@ -43,7 +43,7 @@ func hit() -> void:
 	Utils.add_main(txt)
 	spawn_bubble()
 	destroy()
-	
+
 func error() -> void:
 	var txt = Utils.floating_text_scn.instantiate()
 	txt.global_position = global_position
@@ -59,7 +59,7 @@ func destroy() -> void:
 	parent.bubble_queue.append(key)
 	parent.spawned_bubbles.erase(self)
 	queue_free()
-	
+
 func spawn_bubble() -> void:
 	var ball = Utils.ball_scn.instantiate()
 	ball.global_position = global_position

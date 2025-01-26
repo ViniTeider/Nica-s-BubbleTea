@@ -1,8 +1,10 @@
 extends RigidBody2D
+class_name Ball
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var timer: Timer = $Timer
+
 # Loads all the possible variables
 const GREEN_BALL = preload("res://Assets/balls/green_ball.png")
 const GREEN_BALL_VARIATION = preload("res://Assets/balls/green_ball_variation.png")
@@ -28,6 +30,7 @@ func _on_timer_timeout() -> void:
 	bubble_cloud.global_position = global_position
 	Utils.add_main(bubble_cloud)
 	queue_free()
+	
 	
 func evaporate(instant: bool = false) -> void:
 	if instant:

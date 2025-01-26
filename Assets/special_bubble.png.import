@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfnv5alooc4q"
-path="res://.godot/imported/capyBall.png-e7db4b96149d23bec19f36a2206a9504.ctex"
+uid="uid://0tq6h01w6vdt"
+path="res://.godot/imported/special_bubble.png-a212f4d1a22afed7ae754db7b7836d80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpecialBalls/capyBall.png"
-dest_files=["res://.godot/imported/capyBall.png-e7db4b96149d23bec19f36a2206a9504.ctex"]
+source_file="res://Assets/special_bubble.png"
+dest_files=["res://.godot/imported/special_bubble.png-a212f4d1a22afed7ae754db7b7836d80.ctex"]
 
 [params]
 

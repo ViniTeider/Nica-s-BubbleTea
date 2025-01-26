@@ -174,3 +174,6 @@ sprite_frames = SubResource("SpriteFrames_e1te2")
 animation = &"Empty"
 autoplay = "Empty"
 script = ExtResource("35_jf7h3")
+
+[node name="SpecialBallSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(0, -368)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfnv5alooc4q"
-path="res://.godot/imported/capyBall.png-e7db4b96149d23bec19f36a2206a9504.ctex"
+uid="uid://ctci25pksmgx3"
+path="res://.godot/imported/nicaBall.png-b7dc85416b2aed06a433ce7df7436bbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/SpecialBalls/capyBall.png"
-dest_files=["res://.godot/imported/capyBall.png-e7db4b96149d23bec19f36a2206a9504.ctex"]
+source_file="res://Assets/SpecialBalls/nicaBall.png"
+dest_files=["res://.godot/imported/nicaBall.png-b7dc85416b2aed06a433ce7df7436bbf.ctex"]
 
 [params]
 

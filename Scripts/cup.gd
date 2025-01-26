@@ -9,6 +9,7 @@ class_name Cup
 @onready var right_limit: Marker2D = $RightLimit
 @onready var left_limit: Marker2D = $LeftLimit
 @onready var cup_fill: AnimatedSprite2D = $CupFill
+@onready var special_ball_spawn_point: Marker2D = $SpecialBallSpawnPoint
 
 # Loads the textures for the Key_Bubble sprites
 const A = preload("res://Assets/key_caps/a.png")

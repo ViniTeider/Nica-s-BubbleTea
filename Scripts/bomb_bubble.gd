@@ -7,10 +7,8 @@ func error() -> void:
 	txt.set_error()
 	Utils.add_main(txt)
 	explode()
-	
 
 func explode() -> void:
-	print("EXPLODIU!!")
 	if parent.id == 1:
 		Globals.P1_score -= 5
 		Globals.P1_cup.score -= 5

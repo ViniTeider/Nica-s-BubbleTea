@@ -11,8 +11,8 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func set_special() -> void:
-	rich_text_label.add_theme_font_size_override("bold_font_size", 36)
-	rich_text_label.text = "[b][rainbow freq=1.0 sat=0.8 val=0.8][wave amp=50.0 freq=5.0 connected=1]+5[/wave][/rainbow][/b]"
+	rich_text_label.add_theme_font_size_override("bold_font_size", 64)
+	rich_text_label.text = "[b][rainbow freq=1.0 sat=0.8 val=0.8][wave amp=50.0 freq=5.0 connected=1]+10[/wave][/rainbow][/b]"
 	
 func set_normal() -> void:
 	rich_text_label.add_theme_font_size_override("bold_font_size", 18)
