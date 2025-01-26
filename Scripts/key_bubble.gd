@@ -51,6 +51,10 @@ func error() -> void:
 	txt.global_position = global_position
 	txt.set_error()
 	Utils.add_main(txt)
+	var ball = get_tree().get_first_node_in_group("ball"+str(parent.id))
+	if ball:
+		print(ball.name + " foi evaporada")
+		ball.evaporate(true)
 	destroy()
 
 func destroy() -> void:
