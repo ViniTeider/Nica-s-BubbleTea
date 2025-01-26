@@ -92,7 +92,7 @@ func destroy_all_bubbles() -> void:
 	get_tree().call_group("cup"+str(id), "error")
 
 func spawn_key_bubble() -> void:
-	if key_bubbles_on_screen > 4:
+	if key_bubbles_on_screen > 2:
 		return
 
 	var chosen_key = generateRandomKey()
