@@ -17,6 +17,8 @@ const REGULAR_BALL_VARIATION = preload("res://Assets/balls/regular_ball_variatio
 
 var list_of_skins: Array = [GREEN_BALL, GREEN_BALL_VARIATION, GREY_BALL, GREY_BALL_VARIATION, RED_BALL, RED_BALL_VARIATION, REGULAR_BALL, REGULAR_BALL_VARIATION]
 var scale_modifier: float = 0.6
+var point: int = 1
+var parent: Cup
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,6 +31,7 @@ func _on_timer_timeout() -> void:
 	var bubble_cloud = Utils.bubble_cloud_scn.instantiate()
 	bubble_cloud.global_position = global_position
 	Utils.add_main(bubble_cloud)
+	parent.spawned_balls.erase(self)
 	queue_free()
 	
 	

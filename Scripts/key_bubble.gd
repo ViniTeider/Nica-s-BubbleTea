@@ -65,11 +65,12 @@ func destroy() -> void:
 func spawn_bubble() -> void:
 	var ball = Utils.ball_scn.instantiate()
 	ball.global_position = global_position
-	if parent.id == 1:
-		Globals.P1_score += 1
-	else:
-		Globals.P2_score += 1
-	parent.score += 1
+	#if parent.id == 1:
+		#Globals.P1_score += 1
+	#else:
+		#Globals.P2_score += 1
 	Utils.add_main(ball)
 	ball.add_to_group("ball"+str(parent.id))
+	parent.add_ball(ball)
+	ball.parent = parent
 	

@@ -25,11 +25,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		# B pressed first
 		if event.pressed and event.keycode == KEY_B:
 			#var nodes = get_tree().get_nodes_in_group("cup"+str(id))
-			Globals.P2_score += 10
+			#Globals.P2_score += 10
 			hit(Globals.P2_cup)
 		if event.pressed and event.keycode == KEY_T:
 			#var nodes = get_tree().get_nodes_in_group("cup"+str(id))
-			Globals.P1_score += 10
+			#Globals.P1_score += 10
 			hit(Globals.P1_cup)
 
 # called when you successfully hit the according KEY
@@ -54,6 +54,8 @@ func spawn_bubble(cup: Cup) -> void:
 	ball.global_position = global_position
 	Utils.add_main(ball)
 	ball.add_to_group("ball"+str(cup.id))
+	cup.add_ball(ball)
+	ball.parent = cup
 	var dir
 	if cup.id == 1:
 		dir = -1

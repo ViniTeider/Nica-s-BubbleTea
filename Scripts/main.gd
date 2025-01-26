@@ -4,8 +4,12 @@ extends Node2D
 @onready var cup_2_marker: Marker2D = $Cup2Marker
 @onready var bubble_key_spawn: Timer = $BubbleKeySpawn
 
-@export var score_player_1: Label
-@export var score_player_2: Label
+
+@onready var special_ball_timer: Timer = $SpecialBallTimer
+@onready var special_ball_marker: Marker2D = $SpecialBallMarker
+
+@export var special_timer_low: int = 1
+@export var special_timer_high: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +34,9 @@ func _ready() -> void:
 	
 	add_child(cup1)
 	add_child(cup2)
+	
+	special_ball_timer.wait_time = randi_range(special_timer_low, special_timer_high)
+	special_ball_timer.start()
 
 func _on_bubble_key_spawn_timeout() -> void:
 	Globals.P1_cup.spawn_key_bubble()
@@ -38,9 +45,6 @@ func _on_bubble_key_spawn_timeout() -> void:
 func _process(delta: float) -> void:
 	if (bubble_key_spawn.wait_time > Globals.max_game_speed):
 		bubble_key_spawn.wait_time -= delta * Globals.game_speed
-	
-	score_player_1.text = "Score: " + str(Globals.P1_score)
-	score_player_2.text = "Score: " + str(Globals.P2_score)
 	
 func _on_win(winner: Cup) -> void:
 	get_tree().call_group("cup1", "destroy")
@@ -62,5 +66,10 @@ func _on_win(winner: Cup) -> void:
 		Globals.P1_cup.fill()
 		get_tree().call_group("ball2", "apply_force", force)
 		get_tree().call_group("ball2", "evaporate")
-	
-	
+
+func _on_special_ball_timer_timeout() -> void:
+	var special_keys = Utils.special_keys_scn.instantiate()
+	special_keys.global_position = special_ball_marker.global_position
+	Utils.add_main(special_keys)
+	special_ball_timer.wait_time = randi_range(special_timer_low, special_timer_high)
+	special_ball_timer.start()
