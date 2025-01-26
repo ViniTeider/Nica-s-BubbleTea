@@ -11,6 +11,7 @@ var cup_scn: PackedScene = preload("res://cup_scene.tscn")
 var floating_text_scn: PackedScene = preload("res://floating_number.tscn")
 var bubble_cloud_scn: PackedScene = preload("res://bubble_cloud.tscn")
 const bomb_bubble_scn: PackedScene = preload("res://bomb_bubble.tscn")
+const special_keys_scn = preload("res://special_keys.tscn")
 
 # Constants
 #const P1_KEYS: Array = [KEY_Q, KEY_W, KEY_E, KEY_A, KEY_S, KEY_D] # Q = 81, W = 87, E = 69, A = 65, S = 83, D = 68

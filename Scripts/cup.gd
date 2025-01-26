@@ -47,6 +47,7 @@ enum CUP_COLORS {BLUE,GREEN,PURPLE,RED}
 enum BUBBLE_TYPE {NORMAL, BOMB}
 var closed: bool = false
 var spawned_bubbles: Array
+var spawned_balls: Array
 var id:int 
 
 func _ready() -> void:
@@ -70,6 +71,12 @@ func _process(_delta: float) -> void:
 	if score >= 50 and not closed:
 		SignalBus.win.emit(self)
 		closed = true
+		
+	score = point_sum(spawned_balls)
+	if id == 1:
+		Globals.P1_score = score
+	else:
+		Globals.P2_score = score
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -195,4 +202,14 @@ func set_key_bubble_sprite(key_bubble: KeyBubble, key: int, isBomb: bool = false
 			
 func fill() -> void:
 	cup_fill.play("Filling")
+	
+func point_sum(arr: Array):
+	var sum: int = 0
+	for obj in arr:
+		sum += obj.point
+	print("a soma : ", sum)
+	return sum
+	
+func add_ball(ball: Ball) -> void:
+	spawned_balls.append(ball)
 	

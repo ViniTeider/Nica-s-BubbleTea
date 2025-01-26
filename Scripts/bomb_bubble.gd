@@ -9,13 +9,6 @@ func error() -> void:
 	explode()
 
 func explode() -> void:
-	if parent.id == 1:
-		Globals.P1_score -= 5
-		Globals.P1_cup.score -= 5
-	else:
-		Globals.P2_score -= 5
-		Globals.P2_cup.score -= 5
-
 	var balls = get_tree().get_nodes_in_group("ball"+str(parent.id)).slice(0, 5)
 	for ball in balls:
 		ball.evaporate(true)

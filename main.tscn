@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ivstbxsubpm"]
+[gd_scene load_steps=5 format=3 uid="uid://4ivstbxsubpm"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_43mje"]
 [ext_resource type="PackedScene" uid="uid://bhnjmcbtq0evg" path="res://background.tscn" id="2_hiw6f"]
 [ext_resource type="FontFile" uid="uid://mg5hwwdge1gw" path="res://fonts/PixelOperator8.ttf" id="3_6wvda"]
-[ext_resource type="PackedScene" uid="uid://batvj3pbuiskm" path="res://special_keys.tscn" id="4_py8ka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vh54s"]
 size = Vector2(1849, 74)
@@ -53,7 +52,10 @@ horizontal_alignment = 1
 position = Vector2(936, 840)
 shape = SubResource("RectangleShape2D_vh54s")
 
-[node name="SpecialBubbleManager" parent="." instance=ExtResource("4_py8ka")]
+[node name="SpecialBallTimer" type="Timer" parent="."]
+
+[node name="SpecialBallMarker" type="Marker2D" parent="."]
 position = Vector2(960, 448)
 
 [connection signal="timeout" from="BubbleKeySpawn" to="." method="_on_bubble_key_spawn_timeout"]
+[connection signal="timeout" from="SpecialBallTimer" to="." method="_on_special_ball_timer_timeout"]
