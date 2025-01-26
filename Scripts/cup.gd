@@ -91,7 +91,7 @@ func spawn_key_bubble() -> void:
 	if chosen_key == -1: 
 		return
 	
-	var key_bubble: KeyBubble
+	var key_bubble: RigidBody2D
 	var current_key_bubble_type: BUBBLE_TYPE
 	
 	if randf() < 0.5: 

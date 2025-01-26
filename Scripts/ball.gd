@@ -29,5 +29,8 @@ func _on_timer_timeout() -> void:
 	Utils.add_main(bubble_cloud)
 	queue_free()
 	
-func evaporate() -> void:
-	timer.start()
+func evaporate(instant: bool = false) -> void:
+	if instant:
+		timer.start(0.5)
+	else:
+		timer.start()

@@ -7,7 +7,7 @@
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.987854, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_tnnrx"]
+[sub_resource type="CurveTexture" id="CurveTexture_iu6io"]
 curve = SubResource("Curve_hl1wt")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e3v1w"]
@@ -18,7 +18,7 @@ initial_velocity_min = 100.0
 initial_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.2
-scale_curve = SubResource("CurveTexture_tnnrx")
+scale_curve = SubResource("CurveTexture_iu6io")
 turbulence_noise_strength = 10.65
 
 [node name="BubbleCloud" type="Node2D"]

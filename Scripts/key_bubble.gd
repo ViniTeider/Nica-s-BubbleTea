@@ -50,7 +50,7 @@ func error() -> void:
 	txt.set_error()
 	Utils.add_main(txt)
 	destroy()
-	
+
 func destroy() -> void:
 	var bubble_cloud = Utils.bubble_cloud_scn.instantiate()
 	bubble_cloud.global_position = global_position
@@ -70,3 +70,4 @@ func spawn_bubble() -> void:
 	parent.score += 1
 	Utils.add_main(ball)
 	ball.add_to_group("ball"+str(parent.id))
+	

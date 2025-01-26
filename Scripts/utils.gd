@@ -1,5 +1,8 @@
 extends Node
 
+func _ready() -> void:
+	seed(5)
+
 # Scenes
 var ball_scn: PackedScene = preload('res://teabubble_scene.tscn')
 var key_bubble_scn: PackedScene = preload("res://key_bubble.tscn")

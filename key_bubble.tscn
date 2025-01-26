@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/key_bubble.gd" id="1_xr2lv"]
 [ext_resource type="Texture2D" uid="uid://c7o4e2f3pqt2k" path="res://Assets/bubbles/bubble1.png" id="2_e2pv1"]
-[ext_resource type="Texture2D" uid="uid://m20ipbvtgrk0" path="res://Assets/key_caps/a.png" id="2_rdn3m"]
 
 [sub_resource type="Animation" id="Animation_t54oj"]
 length = 0.001
@@ -74,10 +73,78 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_8gcnn"]
+resource_name = "up_and_down_bomb"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.508333, 0.966667, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 2), Vector2(1, -2), Vector2(-3, 1), Vector2(3, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../BallSprite_2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.966667, 1.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, -2), Vector2(-3, 1), Vector2(3, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../BallSprite_2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5u3vt"]
 _data = {
 "RESET": SubResource("Animation_t54oj"),
-"up_and_down": SubResource("Animation_yl6e0")
+"up_and_down": SubResource("Animation_yl6e0"),
+"up_and_down_bomb": SubResource("Animation_8gcnn")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wh5x"]
@@ -89,7 +156,6 @@ script = ExtResource("1_xr2lv")
 key_bubble_sprite = NodePath("BallSprite_2D")
 
 [node name="BallSprite_2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_rdn3m")
 
 [node name="BubbleSprite_2D" type="Sprite2D" parent="."]
 position = Vector2(3, 2)
