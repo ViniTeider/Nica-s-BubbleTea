@@ -207,7 +207,6 @@ func point_sum(arr: Array):
 	var sum: int = 0
 	for obj in arr:
 		sum += obj.point
-	print("a soma : ", sum)
 	return sum
 	
 func add_ball(ball: Ball) -> void:
