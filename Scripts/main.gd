@@ -4,7 +4,6 @@ extends Node2D
 @onready var cup_2_marker: Marker2D = $Cup2Marker
 @onready var bubble_key_spawn: Timer = $BubbleKeySpawn
 
-
 @onready var special_ball_timer: Timer = $SpecialBallTimer
 @onready var special_ball_marker: Marker2D = $SpecialBallMarker
 
