@@ -38,7 +38,6 @@ func _process(delta: float) -> void:
 # called when you successfully hit the according KEY
 func hit() -> void:
 	GlobalAudio.play_random_bubble()
-
 	var txt = Utils.floating_text_scn.instantiate()
 	txt.global_position = global_position
 	txt.set_normal()
@@ -69,10 +68,6 @@ func destroy() -> void:
 func spawn_bubble() -> void:
 	var ball = Utils.ball_scn.instantiate()
 	ball.global_position = global_position
-	#if parent.id == 1:
-		#Globals.P1_score += 1
-	#else:
-		#Globals.P2_score += 1
 	Utils.add_main(ball)
 	ball.add_to_group("ball"+str(parent.id))
 	parent.add_ball(ball)
