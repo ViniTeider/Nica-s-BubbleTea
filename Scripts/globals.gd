@@ -15,7 +15,7 @@ func start() -> void:
 		Globals.P2_score = 0
 		Globals.P2_cup.queue_free()
 		
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
 var P1_score: int = 0 : 
 	set(value):

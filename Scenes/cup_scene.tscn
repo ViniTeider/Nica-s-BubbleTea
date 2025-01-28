@@ -152,6 +152,7 @@ region_rect = Rect2(112, 96, 272, 248)
 script = ExtResource("3_lt7xc")
 
 [node name="cup_top" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("3_j5lsj")
 region_rect = Rect2(112, 96, 272, 248)
 script = ExtResource("5_bvcwp")

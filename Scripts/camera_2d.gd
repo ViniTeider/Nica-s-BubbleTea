@@ -1,5 +1,6 @@
 extends Camera2D
 class_name Camerao
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func switch() -> void:
