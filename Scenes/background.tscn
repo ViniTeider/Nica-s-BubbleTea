@@ -1,15 +1,13 @@
-[gd_scene load_steps=57 format=3 uid="uid://bhnjmcbtq0evg"]
+[gd_scene load_steps=53 format=3 uid="uid://bhnjmcbtq0evg"]
 
 [ext_resource type="Texture2D" uid="uid://c674m1yowqya6" path="res://Assets/background/bottom-background.png" id="1_re6eh"]
 [ext_resource type="Texture2D" uid="uid://cgm3tuxnn37e" path="res://Assets/NicaBlinking/nicaBlink1.png" id="2_oida2"]
 [ext_resource type="Texture2D" uid="uid://dy75sfyu148dk" path="res://Assets/sign/bubbleSign-export1.png" id="2_qyu4x"]
-[ext_resource type="Texture2D" uid="uid://b5iktg3w2tote" path="res://Assets/background/JapaneseLanter.png" id="2_r2tus"]
 [ext_resource type="Texture2D" uid="uid://doxum5we87oyb" path="res://Assets/background/clouds-background.png" id="2_u30e6"]
 [ext_resource type="Texture2D" uid="uid://bcfdwgrexhlwb" path="res://Assets/background/top-background.png" id="2_x4py5"]
 [ext_resource type="Texture2D" uid="uid://b8ow2s5dyt122" path="res://Assets/sign/bubbleSign-export2.png" id="3_3ggi4"]
 [ext_resource type="Texture2D" uid="uid://s7m2y2angogq" path="res://Assets/background/details-background.png" id="3_3wi7s"]
 [ext_resource type="Texture2D" uid="uid://351wxtcw3x3k" path="res://Assets/NicaBlinking/nicaBlink2.png" id="3_rfok5"]
-[ext_resource type="Script" path="res://Scripts/pin_joint_2d.gd" id="4_7dsv7"]
 [ext_resource type="Texture2D" uid="uid://dk6ov8ghvpjb7" path="res://Assets/NicaBlinking/nicaBlink3.png" id="4_n307l"]
 [ext_resource type="Texture2D" uid="uid://bst2y1tgrpr7q" path="res://Assets/sign/bubbleSign-export3.png" id="4_skcv7"]
 [ext_resource type="Texture2D" uid="uid://bhm5xc3dhwvrf" path="res://Assets/NicaBlinking/nicaBlink4.png" id="5_7kfhn"]
@@ -44,8 +42,24 @@
 [ext_resource type="Texture2D" uid="uid://d4mls8vr4ar6y" path="res://Assets/thiaguinho/tiaguinho-export10.png" id="24_vuw8m"]
 [ext_resource type="Texture2D" uid="uid://c51joittqxdsb" path="res://Assets/thiaguinho/tiaguinho-export11.png" id="25_jowug"]
 [ext_resource type="Texture2D" uid="uid://c58nmcnmfa3fx" path="res://Assets/thiaguinho/tiaguinho-export12.png" id="26_ke01e"]
+[ext_resource type="PackedScene" uid="uid://gjxm2pd7pk4k" path="res://Scenes/lantern_manager.tscn" id="31_w1hhk"]
 [ext_resource type="Texture2D" uid="uid://bt87aealk2ost" path="res://Assets/WantWant/Sprite-0022.png" id="43_8o5ft"]
 [ext_resource type="Texture2D" uid="uid://da1n4lxigf2qv" path="res://Assets/WantWant/Sprite-0023.png" id="44_1lpsg"]
+
+[sub_resource type="Animation" id="Animation_6egll"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2256, 640)]
+}
 
 [sub_resource type="Animation" id="Animation_dg120"]
 resource_name = "clouds"
@@ -62,21 +76,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 0.017337, 0.00157586),
 "update": 0,
 "values": [Vector2(-704, 640), Vector2(2896, 640), Vector2(2896, 640)]
-}
-
-[sub_resource type="Animation" id="Animation_6egll"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2256, 640)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dygtm"]
@@ -203,33 +202,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_ao0hp"]
-script/source = "extends Node2D
-
-@onready var lantern_1: RigidBody2D = $Lantern1
-@onready var lantern_2: RigidBody2D = $Lantern2
-@onready var ventilador: Timer = $VENTILADOR
-
-var assopra_papai = 40
-
-func _ready() -> void:
-	ventilador.timeout.connect(bebeu_dancou_ventilou)
-	assopra()
-	
-func bebeu_dancou_ventilou() -> void:
-	assopra()
-	
-	
-func assopra() -> void:
-	lantern_1.linear_velocity.x += assopra_papai
-	lantern_2.linear_velocity.x += assopra_papai
-"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xfrvb"]
-radius = 109.1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl04p"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_jcgct"]
 animations = [{
 "frames": [{
@@ -331,64 +303,7 @@ autostart = true
 texture = ExtResource("2_x4py5")
 centered = false
 
-[node name="LanternManager" type="Node2D" parent="."]
-script = SubResource("GDScript_ao0hp")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="LanternManager"]
-position = Vector2(272, 128)
-node_a = NodePath("../Lantern1")
-node_b = NodePath("../InvisibleHook")
-script = ExtResource("4_7dsv7")
-
-[node name="Timer" type="Timer" parent="LanternManager/PinJoint2D"]
-one_shot = true
-autostart = true
-
-[node name="Lantern1" type="RigidBody2D" parent="LanternManager"]
-position = Vector2(272, 280)
-mass = 0.1
-
-[node name="Lanterns" type="Sprite2D" parent="LanternManager/Lantern1"]
-texture = ExtResource("2_r2tus")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LanternManager/Lantern1"]
-shape = SubResource("CircleShape2D_xfrvb")
-
-[node name="InvisibleHook" type="StaticBody2D" parent="LanternManager"]
-position = Vector2(280, 80)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LanternManager/InvisibleHook"]
-shape = SubResource("RectangleShape2D_fl04p")
-
-[node name="PinJoint2D2" type="PinJoint2D" parent="LanternManager"]
-position = Vector2(1704, 184)
-node_a = NodePath("../Lantern2")
-node_b = NodePath("../InvisibleHook2")
-script = ExtResource("4_7dsv7")
-
-[node name="Timer" type="Timer" parent="LanternManager/PinJoint2D2"]
-one_shot = true
-autostart = true
-
-[node name="Lantern2" type="RigidBody2D" parent="LanternManager"]
-position = Vector2(1704, 336)
-mass = 0.1
-
-[node name="Lanterns" type="Sprite2D" parent="LanternManager/Lantern2"]
-texture = ExtResource("2_r2tus")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LanternManager/Lantern2"]
-shape = SubResource("CircleShape2D_xfrvb")
-
-[node name="InvisibleHook2" type="StaticBody2D" parent="LanternManager"]
-position = Vector2(1712, 136)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LanternManager/InvisibleHook2"]
-shape = SubResource("RectangleShape2D_fl04p")
-
-[node name="VENTILADOR" type="Timer" parent="LanternManager"]
-wait_time = 5.0
-autostart = true
+[node name="LanternManager" parent="." instance=ExtResource("31_w1hhk")]
 
 [node name="Thiaguinho" type="AnimatedSprite2D" parent="."]
 position = Vector2(152, 696)
@@ -406,5 +321,3 @@ frame_progress = 0.162189
 
 [connection signal="animation_finished" from="Nica" to="Nica" method="_on_animation_finished"]
 [connection signal="timeout" from="Nica/Timer" to="Nica" method="_on_timer_timeout"]
-[connection signal="timeout" from="LanternManager/PinJoint2D/Timer" to="LanternManager/PinJoint2D" method="_on_timer_timeout"]
-[connection signal="timeout" from="LanternManager/PinJoint2D2/Timer" to="LanternManager/PinJoint2D2" method="_on_timer_timeout"]

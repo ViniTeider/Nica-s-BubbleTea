@@ -15,15 +15,15 @@ func _process(_delta: float) -> void:
 		flip_h = true
 
 func _on_timer_timeout() -> void:
-	play("Blink")
+	if animation == "Idle":
+		play("Blink")
 
 func _on_animation_finished() -> void:
 	if animation == "Blink":
 		play("Idle")
 
 func _on_win(_winner: Cup) -> void:
-	print("chegou bna nica dancando")
+	timer.stop()
 	play("Pre_Dancing")
 	await animation_finished
 	play("Dancing")
-	timer.stop()

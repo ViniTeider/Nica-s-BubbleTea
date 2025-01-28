@@ -35,7 +35,6 @@ func _unhandled_input(event: InputEvent) -> void:
 # called when you successfully hit the according KEY
 func hit(cup: Cup) -> void:
 	GlobalAudio.special_balls_sound()
-
 	var txt = Utils.floating_text_scn.instantiate()
 	txt.global_position = global_position
 	txt.set_special()
@@ -61,5 +60,4 @@ func spawn_bubble(cup: Cup) -> void:
 		dir = -1
 	else:
 		dir = 1
-	
 	ball.apply_force(Vector2(100*dir, -100))

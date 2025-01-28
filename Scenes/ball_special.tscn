@@ -19,8 +19,8 @@ script = ExtResource("1_m72qa")
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_f7e18")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="EvaporateTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EvaporateTimer" to="." method="_on_timer_timeout"]

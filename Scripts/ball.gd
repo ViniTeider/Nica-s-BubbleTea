@@ -3,9 +3,9 @@ class_name Ball
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var timer: Timer = $Timer
+@onready var evaporate_timer: Timer = $EvaporateTimer
 
-var scale_modifier: float = 0.6
+var scale_modifier: float = randf_range(0.5, 0.8)
 var point: int = 1
 var parent: Cup
 
@@ -17,16 +17,15 @@ func _ready() -> void:
 	collision_shape_2d.scale = Vector2(scale_modifier, scale_modifier)
 	
 	
-func _on_timer_timeout() -> void:
+func _on_evaporate_timer_timeout() -> void:
 	var bubble_cloud = Utils.bubble_cloud_scn.instantiate()
 	bubble_cloud.global_position = global_position
 	Utils.add_main(bubble_cloud)
 	parent.spawned_balls.erase(self)
 	queue_free()
 	
-	
 func evaporate(instant: bool = false) -> void:
 	if instant:
-		timer.start(0.5)
+		evaporate_timer.start(0.1)
 	else:
-		timer.start()
+		evaporate_timer.start()
