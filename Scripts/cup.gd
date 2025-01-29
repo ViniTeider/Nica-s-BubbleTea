@@ -1,18 +1,10 @@
-extends StaticBody2D
 class_name Cup
-
-@export var bubble_spawn_marker: Marker2D
-
-@onready var cup_bottom: Sprite2D = $cup_bottom
-@onready var cup_top: Sprite2D = $cup_top
-
-@onready var right_limit: Marker2D = $RightLimit
-@onready var left_limit: Marker2D = $LeftLimit
-@onready var cup_fill: AnimatedSprite2D = $CupFill
-@onready var special_ball_spawn_point: Marker2D = $SpecialBallSpawnPoint
+extends StaticBody2D
 
 enum CUP_COLORS {BLUE, GREEN, PURPLE, RED}
 enum BUBBLE_TYPE {NORMAL, BOMB}
+
+@export var bubble_spawn_marker: Marker2D
 
 var cup_keys: Array # The variables that this couple will be able to use in order to create key_bubble
 var spawn_x_range: float
@@ -22,7 +14,14 @@ var bubble_queue: Array = []
 var closed: bool = false
 var spawned_bubbles: Array
 var spawned_balls: Array
-var id: int 
+var id: int
+ 
+@onready var cup_bottom: Sprite2D = $cup_bottom
+@onready var cup_top: Sprite2D = $cup_top
+@onready var right_limit: Marker2D = $RightLimit
+@onready var left_limit: Marker2D = $LeftLimit
+@onready var cup_fill: AnimatedSprite2D = $CupFill
+@onready var special_ball_spawn_point: Marker2D = $SpecialBallSpawnPoint
 
 func _ready() -> void:
 	# Selects a color for the cups

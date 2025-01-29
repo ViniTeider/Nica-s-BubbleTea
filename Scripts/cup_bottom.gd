@@ -1,5 +1,5 @@
-extends Sprite2D
 class_name CupBottom
+extends Sprite2D
 
 func set_bottom_color(chosen_color: int) -> void:
 	match chosen_color:

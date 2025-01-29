@@ -1,14 +1,15 @@
-extends RigidBody2D
 class_name KeyBubble
+extends RigidBody2D
 
 @export var key_bubble_sprite: Sprite2D
-@onready var bubble_sprite_2d: Sprite2D = $BubbleSprite_2D
 
 var key
 var parent: Cup
 var new_size: float
 var bubble_sprite
 var rotating_side: int
+
+@onready var bubble_sprite_2d: Sprite2D = $BubbleSprite_2D
 
 func _ready() -> void:
 	# Sets the bubble sprite

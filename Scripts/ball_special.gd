@@ -1,5 +1,5 @@
+class_name SpecialBall
 extends Ball
-class_name Special_ball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

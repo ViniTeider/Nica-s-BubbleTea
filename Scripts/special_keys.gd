@@ -1,11 +1,11 @@
 extends Node2D
 
-@onready var bubble_t: Sprite2D = $"Ball T/BubbleT"
-@onready var bubble_b: Sprite2D = $"Ball B/BubbleB"
-
 var bubble_sprite
 var rotating_side_b: int
 var rotating_side_t: int
+
+@onready var bubble_t: Sprite2D = $"Ball T/BubbleT"
+@onready var bubble_b: Sprite2D = $"Ball B/BubbleB"
 
 func _ready() -> void:
 	if randf() < 0.5:

@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	gpu_particles_2d.emitting = true
 
+
 func _on_gpu_particles_2d_finished() -> void:
 	gpu_particles_2d.emitting = false
 	queue_free()

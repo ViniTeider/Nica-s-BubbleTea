@@ -1,8 +1,9 @@
-extends Camera2D
 class_name Camerao
+extends Camera2D
 
-# This camera acts like a transition camera, when it spawns, it transitions to another scene then
-# destroys itself
+## This camera acts like a transition camera, when it spawns, it transitions to another scene then
+## destroys itself
+
 var _transition: String = "zoom in zoom out"
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

@@ -1,5 +1,5 @@
-extends KeyBubble
 class_name BombBubble
+extends KeyBubble
 
 func error() -> void:
 	var txt = Utils.floating_text_scn.instantiate()
@@ -7,6 +7,7 @@ func error() -> void:
 	txt.set_error()
 	Utils.add_main(txt)
 	explode()
+
 
 func explode() -> void:
 	GlobalAudio.bomb_exploding_sound()
