@@ -78,6 +78,10 @@ func _on_win(winner: Cup) -> void:
 func _on_special_ball_timer_timeout() -> void:
 	var special_keys = Utils.special_keys_scn.instantiate()
 	special_keys.global_position = special_ball_marker.global_position
+	special_keys.tree_exited.connect(_on_special_ball_destroyed)
 	Utils.add_main(special_keys)
+	special_ball_timer.stop()
+	
+func _on_special_ball_destroyed() -> void:
 	special_ball_timer.wait_time = randi_range(special_timer_low, special_timer_high)
 	special_ball_timer.start()
