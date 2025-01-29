@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://gjxm2pd7pk4k"]
+
+[ext_resource type="Texture2D" uid="uid://b5iktg3w2tote" path="res://Assets/background/JapaneseLanter.png" id="2_2ove5"]
+
+[sub_resource type="GDScript" id="GDScript_ao0hp"]
+script/source = "extends Node2D
+
+@onready var lantern_1: RigidBody2D = $Lantern1
+@onready var lantern_2: RigidBody2D = $Lantern2
+@onready var ventilador: Timer = $VENTILADOR
+
+var assopra_papai = 40
+
+func _ready() -> void:
+	ventilador.timeout.connect(bebeu_dancou_ventilou)
+	assopra()
+	
+func bebeu_dancou_ventilou() -> void:
+	assopra()
+	
+	
+func assopra() -> void:
+	lantern_1.linear_velocity.x += assopra_papai
+	lantern_2.linear_velocity.x += assopra_papai
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xfrvb"]
+radius = 109.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fl04p"]
+
+[node name="LanternManager" type="Node2D"]
+script = SubResource("GDScript_ao0hp")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(272, 128)
+node_a = NodePath("../Lantern1")
+node_b = NodePath("../InvisibleHook")
+motor_enabled = true
+
+[node name="Lantern1" type="RigidBody2D" parent="."]
+position = Vector2(272, 280)
+mass = 0.1
+
+[node name="Lanterns" type="Sprite2D" parent="Lantern1"]
+texture = ExtResource("2_2ove5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lantern1"]
+shape = SubResource("CircleShape2D_xfrvb")
+
+[node name="InvisibleHook" type="StaticBody2D" parent="."]
+position = Vector2(280, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleHook"]
+shape = SubResource("RectangleShape2D_fl04p")
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2(1704, 184)
+node_a = NodePath("../Lantern2")
+node_b = NodePath("../InvisibleHook2")
+motor_enabled = true
+
+[node name="Lantern2" type="RigidBody2D" parent="."]
+position = Vector2(1704, 336)
+mass = 0.1
+
+[node name="Lanterns" type="Sprite2D" parent="Lantern2"]
+texture = ExtResource("2_2ove5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lantern2"]
+shape = SubResource("CircleShape2D_xfrvb")
+
+[node name="InvisibleHook2" type="StaticBody2D" parent="."]
+position = Vector2(1712, 136)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleHook2"]
+shape = SubResource("RectangleShape2D_fl04p")
+
+[node name="VENTILADOR" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

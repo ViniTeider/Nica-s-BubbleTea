@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://4ivstbxsubpm"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_43mje"]
+[ext_resource type="PackedScene" uid="uid://bhnjmcbtq0evg" path="res://Scenes/background.tscn" id="2_hiw6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vh54s"]
+size = Vector2(1849, 74)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_43mje")
+
+[node name="Cup1Marker" type="Marker2D" parent="."]
+position = Vector2(488, 663)
+
+[node name="Cup2Marker" type="Marker2D" parent="."]
+position = Vector2(1448, 660)
+
+[node name="BubbleKeySpawn" type="Timer" parent="."]
+wait_time = 1.592
+autostart = true
+
+[node name="Background" parent="." instance=ExtResource("2_hiw6f")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(936, 840)
+shape = SubResource("RectangleShape2D_vh54s")
+
+[node name="SpecialBallTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SpecialBallMarker" type="Marker2D" parent="."]
+position = Vector2(960, 448)
+
+[connection signal="timeout" from="BubbleKeySpawn" to="." method="_on_bubble_key_spawn_timeout"]
+[connection signal="timeout" from="SpecialBallTimer" to="." method="_on_special_ball_timer_timeout"]

@@ -11,18 +11,16 @@ config_version=5
 [application]
 
 config/name="ShowTheBalls"
-run/main_scene="res://menu.tscn"
+run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
 Utils="*res://Scripts/utils.gd"
 Globals="*res://Scripts/globals.gd"
 SignalBus="*res://Scripts/signal_bus.gd"
-GlobalAudio="*res://GlobalAudio.tscn"
-GlobalMusic="*res://GlobalMusic.tscn"
-Camera="*res://camera.gd"
+GlobalAudio="*res://Scenes/GlobalAudio.tscn"
+GlobalMusic="*res://Scenes/GlobalMusic.tscn"
 
 [display]
 
@@ -35,6 +33,12 @@ cup1="bubbles attached to cup1"
 cup2="bubbles attached to cup2"
 ball1="ball1"
 ball2="ball2"
+
+[layer_names]
+
+2d_physics/layer_1="balls"
+2d_physics/layer_2="key_bubbles"
+2d_physics/layer_3="cup"
 
 [rendering]
 

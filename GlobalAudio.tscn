@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpckshw0p0odq"]
-
-[ext_resource type="Script" path="res://global_audio.gd" id="1_kyix2"]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer"]
-max_polyphony = 100
-script = ExtResource("1_kyix2")
-
-[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cx0s4q1p74val"]
+
+[ext_resource type="Texture2D" uid="uid://blv7a0tbh47c0" path="res://Assets/spritesheet_keys.png" id="1_pa2g6"]
+
+[resource]
+atlas = ExtResource("1_pa2g6")

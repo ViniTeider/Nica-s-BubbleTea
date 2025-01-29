@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://batvj3pbuiskm"]
+
+[ext_resource type="Script" path="res://Scripts/special_keys.gd" id="1_6vldp"]
+[ext_resource type="Texture2D" uid="uid://c7o4e2f3pqt2k" path="res://Assets/bubbles/bubble1.png" id="2_1gjcq"]
+[ext_resource type="Texture2D" uid="uid://cx0s4q1p74val" path="res://Resources/keys_atlas_texture.tres" id="3_fe8ag"]
+[ext_resource type="Texture2D" uid="uid://0tq6h01w6vdt" path="res://Assets/special_bubble.png" id="3_xocww"]
+
+[sub_resource type="Curve" id="Curve_1tq6d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.987854, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tnnrx"]
+curve = SubResource("Curve_1tq6d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hubwm"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_tnnrx")
+turbulence_noise_strength = 10.65
+
+[node name="SpecialBubbleManager" type="Node2D"]
+script = ExtResource("1_6vldp")
+
+[node name="Ball T" type="Node2D" parent="."]
+position = Vector2(-473, -191)
+scale = Vector2(1.12482, 1.12482)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Ball T"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(-0.873188, 1.74637)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_hubwm")
+texture = ExtResource("2_1gjcq")
+lifetime = 1.5
+
+[node name="KeyT" type="Sprite2D" parent="Ball T"]
+texture = ExtResource("3_fe8ag")
+region_enabled = true
+region_rect = Rect2(0, 192, 44, 48)
+
+[node name="BubbleT" type="Sprite2D" parent="Ball T"]
+modulate = Color(1, 1, 0.694118, 0.870588)
+texture = ExtResource("3_xocww")
+
+[node name="Ball B" type="Node2D" parent="."]
+position = Vector2(417, -191)
+scale = Vector2(1.12482, 1.12482)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Ball B"]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(48.8301, 1.64473)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_hubwm")
+texture = ExtResource("2_1gjcq")
+lifetime = 1.5
+
+[node name="KeyB" type="Sprite2D" parent="Ball B"]
+position = Vector2(48, 0)
+texture = ExtResource("3_fe8ag")
+region_enabled = true
+region_rect = Rect2(44, 192, 44, 48)
+
+[node name="BubbleB" type="Sprite2D" parent="Ball B"]
+modulate = Color(1, 1, 0.694118, 0.870588)
+position = Vector2(48, 0)
+texture = ExtResource("3_xocww")

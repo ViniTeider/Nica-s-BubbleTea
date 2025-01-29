@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bme8glstltrx8"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_5x3sp"]
+[ext_resource type="PackedScene" uid="uid://bhnjmcbtq0evg" path="res://Scenes/background.tscn" id="1_bxwy4"]
+[ext_resource type="Script" path="res://Scripts/fatherofall.gd" id="1_v7hrd"]
+[ext_resource type="Texture2D" uid="uid://behu2jpl1j7jp" path="res://Assets/sign/playButton.png" id="3_maxhx"]
+
+[node name="FatherOfAll" type="Node" node_paths=PackedStringArray("current_scene")]
+script = ExtResource("1_v7hrd")
+current_scene = NodePath("Menu")
+
+[node name="Menu" type="Node2D" parent="."]
+script = ExtResource("1_5x3sp")
+
+[node name="Background" parent="Menu" instance=ExtResource("1_bxwy4")]
+
+[node name="TextureButton" type="TextureButton" parent="Menu"]
+offset_left = 639.0
+offset_top = 134.0
+offset_right = 1269.0
+offset_bottom = 344.0
+texture_normal = ExtResource("3_maxhx")
+
+[connection signal="pressed" from="Menu/TextureButton" to="Menu" method="_on_texture_button_pressed"]
+
+[editable path="Menu/Background"]
