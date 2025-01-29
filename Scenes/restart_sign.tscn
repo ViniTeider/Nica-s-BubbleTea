@@ -5,21 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://fxvviasm32d5" path="res://Assets/sign/restart_button.png" id="2_u0r1f"]
 [ext_resource type="FontFile" uid="uid://bvs6i5gvcgj4e" path="res://fonts/PixelOperator8-Bold.ttf" id="3_35qnv"]
 
-[sub_resource type="Animation" id="Animation_f7ver"]
-resource_name = "chegando"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(712, -280), Vector2(720, 392)]
-}
-
 [sub_resource type="Animation" id="Animation_5nid0"]
 length = 0.001
 tracks/0/type = "value"
@@ -33,6 +18,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(8, -288)]
+}
+
+[sub_resource type="Animation" id="Animation_f7ver"]
+resource_name = "chegando"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(712, -280), Vector2(720, 392)]
 }
 
 [sub_resource type="Animation" id="Animation_150o2"]

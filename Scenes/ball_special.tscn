@@ -1,26 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://y3hhpkjgff6p"]
+[gd_scene load_steps=6 format=3 uid="uid://y3hhpkjgff6p"]
 
+[ext_resource type="PackedScene" uid="uid://cuk8tddbfkfqf" path="res://Scenes/ball.tscn" id="1_0ftis"]
 [ext_resource type="Script" path="res://Scripts/ball_special.gd" id="1_m72qa"]
+[ext_resource type="Texture2D" uid="uid://sf7ewc22wkme" path="res://Resources/special_balls_atlas_texture.tres" id="3_07mwt"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_14mrk"]
-bounce = 0.29
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_th7u1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f7e18"]
-radius = 26.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_a16a4"]
+resource_local_to_scene = true
+radius = 32.0
 
-[node name="ballSpecial" type="RigidBody2D"]
-mass = 0.004
-physics_material_override = SubResource("PhysicsMaterial_14mrk")
+[node name="BallSpecial" instance=ExtResource("1_0ftis")]
 script = ExtResource("1_m72qa")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_th7u1")
+texture = ExtResource("3_07mwt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-shape = SubResource("CircleShape2D_f7e18")
-
-[node name="EvaporateTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[connection signal="timeout" from="EvaporateTimer" to="." method="_on_timer_timeout"]
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_a16a4")

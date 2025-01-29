@@ -8,7 +8,6 @@ func error() -> void:
 	Utils.add_main(txt)
 	explode()
 
-
 func explode() -> void:
 	GlobalAudio.bomb_exploding_sound()
 	var balls = get_tree().get_nodes_in_group("ball"+str(parent.id)).slice(0, 5)

@@ -24,4 +24,4 @@ func set_text(txt: String):
 
 
 func f():
-	Globals.start()
+	Utils.transition_to(Utils.main_scn.instantiate())

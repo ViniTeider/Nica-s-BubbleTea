@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://uj8akm32t0li"]
+[gd_scene load_steps=9 format=3 uid="uid://uj8akm32t0li"]
 
 [ext_resource type="Script" path="res://Scripts/key_bubble.gd" id="1_xr2lv"]
+[ext_resource type="Texture2D" uid="uid://cx0s4q1p74val" path="res://Resources/keys_atlas_texture.tres" id="2_b46hs"]
 [ext_resource type="Texture2D" uid="uid://c7o4e2f3pqt2k" path="res://Assets/bubbles/bubble1.png" id="2_e2pv1"]
 
 [sub_resource type="Animation" id="Animation_t54oj"]
@@ -25,7 +26,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../BallSprite_2D:position")
+tracks/1/path = NodePath("../KeySprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -49,7 +50,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../BallSprite_2D:scale")
+tracks/3/path = NodePath("../KeySprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -92,7 +93,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../BallSprite_2D:position")
+tracks/1/path = NodePath("../KeySprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +117,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../BallSprite_2D:scale")
+tracks/3/path = NodePath("../KeySprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -150,12 +151,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_3wh5x"]
 radius = 37.0135
 
-[node name="KeyBubble" type="RigidBody2D" node_paths=PackedStringArray("key_bubble_sprite")]
+[node name="KeyBubble" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 6
 gravity_scale = 0.0
 script = ExtResource("1_xr2lv")
-key_bubble_sprite = NodePath("BallSprite_2D")
 
-[node name="BallSprite_2D" type="Sprite2D" parent="."]
+[node name="KeySprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_b46hs")
+region_enabled = true
 
 [node name="BubbleSprite_2D" type="Sprite2D" parent="."]
 position = Vector2(3, 2)

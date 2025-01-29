@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rkkx7jqrd00h"
-path="res://.godot/imported/br-50009109-acacb32f2bc4b5b48bc5a4b9bf36da3e.png-85776eba107fd6a162b4cf23c389d973.ctex"
+uid="uid://blv7a0tbh47c0"
+path="res://.godot/imported/spritesheet_keys.png-ce12f856134fd8e25e337276ecd1de1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/filling_cup/br-50009109-acacb32f2bc4b5b48bc5a4b9bf36da3e.png"
-dest_files=["res://.godot/imported/br-50009109-acacb32f2bc4b5b48bc5a4b9bf36da3e.png-85776eba107fd6a162b4cf23c389d973.ctex"]
+source_file="res://Assets/spritesheet_keys.png"
+dest_files=["res://.godot/imported/spritesheet_keys.png-ce12f856134fd8e25e337276ecd1de1d.ctex"]
 
 [params]
 

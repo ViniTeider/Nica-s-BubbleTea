@@ -1,8 +1,8 @@
 extends Node
 
 # Scenes, better to leave with var since const prevents from changing the child nodes.
-var ball_scn: PackedScene = preload("res://Scenes/teabubble_scene.tscn")
-var specialball_scn: PackedScene = preload("res://Scenes/ball_special.tscn")
+var ball_scn: PackedScene = preload("res://Scenes/ball.tscn")
+var ball_special_scn: PackedScene = preload("res://Scenes/ball_special.tscn")
 var key_bubble_scn: PackedScene = preload("res://Scenes/key_bubble.tscn")
 var cup_scn: PackedScene = preload("res://Scenes/cup_scene.tscn")
 var floating_text_scn: PackedScene = preload("res://Scenes/floating_number.tscn")
@@ -15,6 +15,44 @@ var restart_sign_scn: PackedScene = preload("res://Scenes/restart_sign.tscn")
 var menu_scn: PackedScene = preload("res://Scenes/menu.tscn")
 
 # Constants
+
+const KEYBOARD_REGION = {
+	# Player 1 Keys
+	"A": Vector2(0, 0),
+	"S": Vector2(1, 0),
+	"D": Vector2(2, 0),
+	"Z": Vector2(3, 0),
+	"X": Vector2(4, 0),
+	"C": Vector2(5, 0),
+	
+	# Player 2 Keys
+	"U": Vector2(0, 1),
+	"I": Vector2(1, 1),
+	"O": Vector2(2, 1),
+	"J": Vector2(3, 1),
+	"K": Vector2(4, 1),
+	"L": Vector2(5, 1),
+	
+	# Player 1 Bomb keys
+	"A_BOMB": Vector2(0, 2),
+	"S_BOMB": Vector2(1, 2),
+	"D_BOMB": Vector2(2, 2),
+	"Z_BOMB": Vector2(3, 2),
+	"X_BOMB": Vector2(4, 2),
+	"C_BOMB": Vector2(5, 2),
+	
+	# Player 2 Bomb keys
+	"U_BOMB": Vector2(0, 3),
+	"I_BOMB": Vector2(1, 3),
+	"O_BOMB": Vector2(2, 3),
+	"J_BOMB": Vector2(3, 3),
+	"K_BOMB": Vector2(4, 3),
+	"L_BOMB": Vector2(5, 3),
+	
+	# Special Keys
+	"SPECIAL_T": Vector2(0, 4),
+	"SPECIAL_B": Vector2(1, 4),
+}
 
 # Z = 90, X = 88, C = 67, A = 65, S = 83, D = 68
 const P1_KEYS: Array = [KEY_Z, KEY_X, KEY_C, KEY_A, KEY_S, KEY_D]
@@ -41,63 +79,6 @@ BUBBLE_4, BUBBLE_5, BUBBLE_6,
 BUBBLE_7, BUBBLE_8, BUBBLE_9, 
 BUBBLE_10, BUBBLE_11]
 
-# Tea Bubble textures (The bubbles that falls into the cup)
-const GREEN_BALL = preload("res://Assets/balls/green_ball.png")
-const GREEN_BALL_VARIATION = preload("res://Assets/balls/green_ball_variation.png")
-const GREY_BALL = preload("res://Assets/balls/grey_ball.png")
-const GREY_BALL_VARIATION = preload("res://Assets/balls/grey_ball_variation.png")
-const RED_BALL = preload("res://Assets/balls/red_ball.png")
-const RED_BALL_VARIATION = preload("res://Assets/balls/red_ball_variation.png")
-const REGULAR_BALL = preload("res://Assets/balls/regular_ball.png")
-const REGULAR_BALL_VARIATION = preload("res://Assets/balls/regular_ball_variation.png")
-
-var tea_bubble_sprites = [GREEN_BALL, GREEN_BALL_VARIATION, GREY_BALL, 
-GREY_BALL_VARIATION, RED_BALL, RED_BALL_VARIATION, 
-REGULAR_BALL, REGULAR_BALL_VARIATION]
-
-# Special tea bubble textures
-const CAPY_BALL = preload("res://Assets/SpecialBalls/capyBall.png")
-const GOOFY_BALL = preload("res://Assets/SpecialBalls/goofy_ball.png")
-const RABBIT_BALL = preload("res://Assets/SpecialBalls/rabbit_ball.png")
-const NICA_BALL = preload("res://Assets/SpecialBalls/nicaBall.png")
-const ASE_BALL = preload("res://Assets/SpecialBalls/aseBall.png")
-const GODOT_BALL = preload("res://Assets/SpecialBalls/godot_ball.png")
-const LUCKY_BALL = preload("res://Assets/SpecialBalls/luckyBall.png")
-const MONKEY_BALL = preload("res://Assets/SpecialBalls/monkeyBall.png")
-const LANTERN_BALL = preload("res://Assets/SpecialBalls/lantern_ball.png")
-
-var special_tea_bubble_sprites = [CAPY_BALL, GOOFY_BALL, RABBIT_BALL, 
-NICA_BALL, ASE_BALL, GODOT_BALL,
-LUCKY_BALL, MONKEY_BALL, LANTERN_BALL]
-
-# Key sprites
-const KEYBOARD_A = preload("res://Assets/key_caps/a.png")
-const KEYBOARD_D = preload("res://Assets/key_caps/d.png")
-const KEYBOARD_I = preload("res://Assets/key_caps/i.png")
-const KEYBOARD_J = preload("res://Assets/key_caps/j.png")
-const KEYBOARD_K = preload("res://Assets/key_caps/k.png")
-const KEYBOARD_L = preload("res://Assets/key_caps/l.png")
-const KEYBOARD_O = preload("res://Assets/key_caps/o.png")
-const KEYBOARD_S = preload("res://Assets/key_caps/s.png")
-const KEYBOARD_U = preload("res://Assets/key_caps/u.png")
-const KEYBOARD_C = preload("res://Assets/key_caps/c.png")
-const KEYBOARD_X = preload("res://Assets/key_caps/x.png")
-const KEYBOARD_Z = preload("res://Assets/key_caps/z.png")
-
-# Bomb key sprites
-const KEYBOARD_A_BOMB = preload("res://Assets/Bombs/Player_one/a_bomb.png")
-const KEYBOARD_C_BOMB = preload("res://Assets/Bombs/Player_one/c_bomb.png")
-const KEYBOARD_D_BOMB = preload("res://Assets/Bombs/Player_one/d_bomb.png")
-const KEYBOARD_S_BOMB = preload("res://Assets/Bombs/Player_one/s_bomb.png")
-const KEYBOARD_X_BOMB = preload("res://Assets/Bombs/Player_one/x_bomb.png")
-const KEYBOARD_Z_BOMB = preload("res://Assets/Bombs/Player_one/z_bomb.png")
-const KEYBOARD_I_BOMB = preload("res://Assets/Bombs/Player_two/i_bomb.png")
-const KEYBOARD_J_BOMB = preload("res://Assets/Bombs/Player_two/j_bomb.png")
-const KEYBOARD_K_BOMB = preload("res://Assets/Bombs/Player_two/k_bomb.png")
-const KEYBOARD_L_BOMB = preload("res://Assets/Bombs/Player_two/l_bomb.png")
-const KEYBOARD_O_BOMB = preload("res://Assets/Bombs/Player_two/o_bomb.png")
-const KEYBOARD_U_BOMB = preload("res://Assets/Bombs/Player_two/u_bomb.png")
-
 # Cup bottom sprites
 const BLUE_CUP_BOTTOM = preload("res://Assets/cups/blue/blue_cup_bottom.png")
 const GREEN_CUP_BOTTOM = preload("res://Assets/cups/green/green_cup_bottom.png")
@@ -114,6 +95,7 @@ const RED_CUP_TOP = preload("res://Assets/cups/red/red_cup_top.png")
 func add_main(obj: Object) -> void:
 	get_tree().current_scene.get_child(0).add_child(obj)
 
+# Transitions the scene to another scene
 func transition_to(scene_node: Node) -> void:
 	if scene_node == null:
 		push_error("Attempting to transition to a null node.")
@@ -122,3 +104,8 @@ func transition_to(scene_node: Node) -> void:
 	get_tree().current_scene.add_child(transition_cam)
 	transition_cam.set_next_scene(scene_node)
 	transition_cam.transition()
+
+
+# Change the sprite region 
+func update_sprite_region(sprite: Sprite2D, frame_coord: Vector2, width: int, height: int):
+	sprite.region_rect = Rect2(frame_coord.x * width, frame_coord.y * height, width, height)

@@ -1,7 +1,8 @@
 class_name KeyBubble
 extends RigidBody2D
 
-@export var key_bubble_sprite: Sprite2D
+const KEY_WIDTH = 44
+const KEY_HEIGHT = 48
 
 var key
 var parent: Cup
@@ -9,6 +10,7 @@ var new_size: float
 var bubble_sprite
 var rotating_side: int
 
+@onready var key_sprite: Sprite2D = $KeySprite
 @onready var bubble_sprite_2d: Sprite2D = $BubbleSprite_2D
 
 func _ready() -> void:
@@ -20,8 +22,9 @@ func _ready() -> void:
 	else:
 		rotating_side = -1
 
+
 func _process(delta: float) -> void:
-	bubble_sprite_2d.rotation_degrees += randf_range(15, 30) * rotating_side * delta
+	key_sprite.rotation_degrees += randf_range(15, 30) * rotating_side * delta
 
 # Called when you successfully hit the according KEY
 func hit() -> void:
@@ -62,4 +65,69 @@ func spawn_tea_bubble() -> void:
 	ball.add_to_group("ball"+str(parent.id))
 	parent.add_ball(ball)
 	ball.parent = parent
+
+
+
+func set_key_sprite(_key: int, isBomb: bool = false) -> void:
+	# # Z = 90, X = 88, C = 67, A = 65, S = 83, D = 68
+	# U = 85, I = 73, O = 79, J = 74, K = 75, L = 76
 	
+	if isBomb:
+		_key += 100
+	
+	match _key:
+		# Player 1
+		65:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["A"], KEY_WIDTH, KEY_HEIGHT)
+		83:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["S"], KEY_WIDTH, KEY_HEIGHT)
+		68:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["D"], KEY_WIDTH, KEY_HEIGHT)
+		90:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["Z"], KEY_WIDTH, KEY_HEIGHT)
+		88:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["X"], KEY_WIDTH, KEY_HEIGHT)
+		67:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["C"], KEY_WIDTH, KEY_HEIGHT)
+		
+		# Player 2
+		85:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["U"], KEY_WIDTH, KEY_HEIGHT)
+		73:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["I"], KEY_WIDTH, KEY_HEIGHT)
+		79:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["O"], KEY_WIDTH, KEY_HEIGHT)
+		74:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["J"], KEY_WIDTH, KEY_HEIGHT)
+		75:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["K"], KEY_WIDTH, KEY_HEIGHT)
+		76:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["L"], KEY_WIDTH, KEY_HEIGHT)
+		
+		# Bomb Player 1
+		165: # 65 + 100 (A)
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["A_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		183:  # 83 + 100 (S)
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["S_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		168:  # 68 + 100 (D)
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["D_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		190:  # 90 + 100 (Z)
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["Z_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		188:  # 88 + 100 (X)
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["X_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		167:  # 67 + 100 (C)
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["C_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		
+		# Bomb Player 2
+		185:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["U_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		173:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["I_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		179:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["O_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		174:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["J_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		175:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["K_BOMB"], KEY_WIDTH, KEY_HEIGHT)
+		176:
+			Utils.update_sprite_region(key_sprite, Utils.KEYBOARD_REGION["L_BOMB"], KEY_WIDTH, KEY_HEIGHT)

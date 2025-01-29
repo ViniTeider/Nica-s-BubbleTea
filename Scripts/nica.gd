@@ -7,13 +7,6 @@ func _ready() -> void:
 	SignalBus.win.connect(_on_win)
 	play("Idle")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if Globals.P1_score > Globals.P2_score:
-		flip_h = false
-	else:
-		flip_h = true
-
 func _on_timer_timeout() -> void:
 	if animation == "Idle":
 		play("Blink")

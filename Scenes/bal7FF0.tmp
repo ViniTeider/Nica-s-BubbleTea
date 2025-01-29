@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuk8tddbfkfqf"]
+
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_n3dmn"]
+[ext_resource type="Texture2D" uid="uid://fwsy0rt8o1mw" path="res://Resources/balls_atlas_texture.tres" id="2_bmj6d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4snww"]
+bounce = 0.29
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yoxj7"]
+resource_local_to_scene = true
+radius = 16.0
+
+[node name="Ball" type="RigidBody2D"]
+collision_mask = 5
+mass = 0.004
+physics_material_override = SubResource("PhysicsMaterial_4snww")
+script = ExtResource("1_n3dmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bmj6d")
+region_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yoxj7")
+
+[node name="EvaporateTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="EvaporateTimer" to="." method="_on_evaporate_timer_timeout"]

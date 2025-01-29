@@ -34,6 +34,12 @@ cup2="bubbles attached to cup2"
 ball1="ball1"
 ball2="ball2"
 
+[layer_names]
+
+2d_physics/layer_1="balls"
+2d_physics/layer_2="key_bubbles"
+2d_physics/layer_3="cup"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

@@ -15,10 +15,10 @@ script = ExtResource("1_5x3sp")
 [node name="Background" parent="Menu" instance=ExtResource("1_bxwy4")]
 
 [node name="TextureButton" type="TextureButton" parent="Menu"]
-offset_left = 648.0
-offset_top = 136.0
-offset_right = 1278.0
-offset_bottom = 346.0
+offset_left = 639.0
+offset_top = 134.0
+offset_right = 1269.0
+offset_bottom = 344.0
 texture_normal = ExtResource("3_maxhx")
 
 [connection signal="pressed" from="Menu/TextureButton" to="Menu" method="_on_texture_button_pressed"]

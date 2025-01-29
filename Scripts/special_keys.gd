@@ -3,34 +3,40 @@ extends Node2D
 var bubble_sprite
 var rotating_side_b: int
 var rotating_side_t: int
+var cups: Array[Cup] = []
 
-@onready var bubble_t: Sprite2D = $"Ball T/BubbleT"
 @onready var bubble_b: Sprite2D = $"Ball B/BubbleB"
+@onready var bubble_t: Sprite2D = $"Ball T/BubbleT"
 
 func _ready() -> void:
+	SignalBus.win.connect(_on_win)
 	if randf() < 0.5:
 		rotating_side_b = 1
 		rotating_side_t = -1
 	else:
 		rotating_side_t = -1
 		rotating_side_b = 1
-	
+
+
 func _process(delta: float) -> void:
 	bubble_t.rotation_degrees += randf_range(15, 30) * rotating_side_t * delta
 	bubble_b.rotation_degrees += randf_range(15, 30) * rotating_side_b * delta
+
 
 # Checks user input
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		# B pressed first
 		if event.pressed and event.keycode == KEY_B:
-			#var nodes = get_tree().get_nodes_in_group("cup"+str(id))
-			#Globals.P2_score += 10
-			hit(Globals.P2_cup)
+			hit(cups[1])
+		# T pressed first???
 		if event.pressed and event.keycode == KEY_T:
-			#var nodes = get_tree().get_nodes_in_group("cup"+str(id))
-			#Globals.P1_score += 10
-			hit(Globals.P1_cup)
+			hit(cups[0])
+
+
+func _on_win(_winner: Cup) -> void:
+	queue_free()
+
 
 # called when you successfully hit the according KEY
 func hit(cup: Cup) -> void:
@@ -39,7 +45,7 @@ func hit(cup: Cup) -> void:
 	txt.global_position = global_position
 	txt.set_special()
 	Utils.add_main(txt)
-	spawn_bubble(cup)
+	spawn_special_ball(cup)
 	destroy()
 
 func destroy() -> void:
@@ -48,16 +54,21 @@ func destroy() -> void:
 	Utils.add_main(bubble_cloud)
 	queue_free()
 
-func spawn_bubble(cup: Cup) -> void:
-	var ball = Utils.specialball_scn.instantiate()
-	ball.global_position = global_position
-	Utils.add_main(ball)
-	ball.add_to_group("ball"+str(cup.id))
-	cup.add_ball(ball)
-	ball.parent = cup
+func spawn_special_ball(cup: Cup) -> void:
+	var special_ball = Utils.ball_special_scn.instantiate()
+	Utils.add_main(special_ball)
+	
+	special_ball.global_position = global_position
+	special_ball.add_to_group("special_ball"+str(cup.id))
+	
+	cup.add_ball(special_ball)
+	special_ball.parent = cup
 	var dir
 	if cup.id == 1:
 		dir = -1
 	else:
 		dir = 1
-	ball.apply_force(Vector2(100*dir, -100))
+	special_ball.apply_force(Vector2(100*dir, -100))
+	
+func set_cups(cup1: Cup, cup2: Cup) -> void:
+	cups = [cup1, cup2]

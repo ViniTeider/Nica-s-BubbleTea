@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rkkx7jqrd00h"
-path="res://.godot/imported/br-50009109-acacb32f2bc4b5b48bc5a4b9bf36da3e.png-85776eba107fd6a162b4cf23c389d973.ctex"
+uid="uid://cld8kdjoblaoi"
+path="res://.godot/imported/bubble_sign_spritesheet.png-cdef416c580b3e76a81ad37e67d5def0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/filling_cup/br-50009109-acacb32f2bc4b5b48bc5a4b9bf36da3e.png"
-dest_files=["res://.godot/imported/br-50009109-acacb32f2bc4b5b48bc5a4b9bf36da3e.png-85776eba107fd6a162b4cf23c389d973.ctex"]
+source_file="res://Assets/sign/bubble_sign_spritesheet.png"
+dest_files=["res://.godot/imported/bubble_sign_spritesheet.png-cdef416c580b3e76a81ad37e67d5def0.ctex"]
 
 [params]
 
