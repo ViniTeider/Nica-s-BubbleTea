@@ -21,7 +21,6 @@ Globals="*res://Scripts/globals.gd"
 SignalBus="*res://Scripts/signal_bus.gd"
 GlobalAudio="*res://Scenes/GlobalAudio.tscn"
 GlobalMusic="*res://Scenes/GlobalMusic.tscn"
-Camera="*res://Scripts/camera.gd"
 
 [display]
 

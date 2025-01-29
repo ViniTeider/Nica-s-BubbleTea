@@ -54,7 +54,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(1, 2),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [],
+"args": [null],
 "method": &"switch"
 }, {
 "args": [],

@@ -7,7 +7,4 @@ signal win(winner: Cup)
 signal game_started
 
 @warning_ignore("unused_signal")
-signal camera_created
-
-@warning_ignore("unused_signal")
 signal scene_changed(new_scene: Node)

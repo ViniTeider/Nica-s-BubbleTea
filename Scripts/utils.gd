@@ -12,6 +12,7 @@ var special_keys_scn: PackedScene = preload("res://Scenes/special_keys.tscn")
 var main_scn: PackedScene = preload("res://Scenes/main.tscn")
 var camerao_scn: PackedScene = preload("res://Scenes/camerao.tscn")
 var restart_sign_scn: PackedScene = preload("res://Scenes/restart_sign.tscn")
+var menu_scn: PackedScene = preload("res://Scenes/menu.tscn")
 
 # Constants
 
@@ -112,4 +113,12 @@ const RED_CUP_TOP = preload("res://Assets/cups/red/red_cup_top.png")
 # Adds a child to the main game scene.
 func add_main(obj: Object) -> void:
 	get_tree().current_scene.get_child(0).add_child(obj)
+
+func transition_to(scene_node: Node) -> void:
+	if scene_node == null:
+		push_error("Attempting to transition to a null node.")
 	
+	var transition_cam = Utils.camerao_scn.instantiate()
+	get_tree().current_scene.add_child(transition_cam)
+	transition_cam.set_next_scene(scene_node)
+	transition_cam.transition()

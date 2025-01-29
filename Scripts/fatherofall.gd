@@ -14,8 +14,8 @@ func _on_game_started() -> void:
 
 func _on_scene_changed(new_scene: Node) -> void:
 	if new_scene == null:
-		return
-	
+		push_error("Attempting to change scene to a null value")
+			
 	if current_scene:
 		remove_child(current_scene)
 		current_scene.call_deferred("queue_free")
