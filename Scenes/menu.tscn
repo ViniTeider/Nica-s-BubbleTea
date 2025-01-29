@@ -5,8 +5,9 @@
 [ext_resource type="Script" path="res://Scripts/fatherofall.gd" id="1_v7hrd"]
 [ext_resource type="Texture2D" uid="uid://behu2jpl1j7jp" path="res://Assets/sign/playButton.png" id="3_maxhx"]
 
-[node name="FatherOfAll" type="Node"]
+[node name="FatherOfAll" type="Node" node_paths=PackedStringArray("current_scene")]
 script = ExtResource("1_v7hrd")
+current_scene = NodePath("Menu")
 
 [node name="Menu" type="Node2D" parent="."]
 script = ExtResource("1_5x3sp")

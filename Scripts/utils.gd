@@ -111,5 +111,5 @@ const RED_CUP_TOP = preload("res://Assets/cups/red/red_cup_top.png")
 
 # Adds a child to the main game scene.
 func add_main(obj: Object) -> void:
-	get_tree().root.get_node("Main").add_child(obj)
+	get_tree().current_scene.get_child(0).add_child(obj)
 	
