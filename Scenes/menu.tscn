@@ -14,6 +14,13 @@ script = ExtResource("1_5x3sp")
 
 [node name="Background" parent="Menu" instance=ExtResource("1_bxwy4")]
 
+[node name="Sign" parent="Menu/Background" index="3"]
+frame_progress = 0.0688605
+
+[node name="Thiaguinho" parent="Menu/Background" index="7"]
+position = Vector2(162, 708)
+scale = Vector2(1.11538, 1.11538)
+
 [node name="TextureButton" type="TextureButton" parent="Menu"]
 offset_left = 639.0
 offset_top = 134.0
