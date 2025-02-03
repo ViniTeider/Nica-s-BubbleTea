@@ -2,13 +2,29 @@
 
 **A party game where two bubble tea trainees race to fill their cups with bubbles, all under the watchful eye of Nica, the doggo boss!**  
 
-Test your typing skills in this fast-paced, split-screen multiplayer game. Compete against a friend on the same keyboard to see who can fill their bubble tea cup the fastest—while avoiding mistakes that can leave you stunned!  
+Test your typing skills in this fast-paced, split-screen multiplayer game. Compete against a friend on the same keyboard to see who can fill their bubble tea cup the fastest—while avoiding mistakes that can leave you stunned! 
 
-## 🕹️ Gameplay  
+##
 
-- **Fast Typing, Big Bubbles**: Type the correct keys quickly to pop bubbles and fill your cup.  
-- **Mistakes Have Consequences**: Typing the wrong key stuns you, giving your opponent a chance to pull ahead.  
-- **Split-Screen Fun**: Two players share the keyboard in this head-to-head typing race.  
+### 🕹️ Gameplay  
+
+- **Players:** Up to 2 players (Player 1 vs. Player 2)
+- **Objective:** Be the first to fill your cup with bubbles.
+- **Game loop:** Watch the screen for bubbles with letters, and press the corresponding key on your keyboard.
+
+### Types of Bubbles
+
+1. **Normal Bubbles:**
+   - **Reward:** Correctly pressing the key adds **+1 bubble** to your cup.
+   - **Penalty:** A wrong key press removes **-1 bubble** from your cup.
+
+2. **Red Bubbles:**
+   - **Reward:** Correctly pressing the key adds **+1 bubble** to your cup.
+   - **Penalty:** A wrong key press removes **-5 bubbles** from your cup.
+
+3. **Special Bubbles:**
+   - **How they work:** Occasionally, a special bubble will appear on the screen.
+   - **Challenge:** Only one player can claim it; whoever presses the designated special key first wins the bubble!
 
 ## ✨ Features  
 
@@ -28,17 +44,26 @@ https://github.com/user-attachments/assets/2deef517-c4f0-4f17-af0c-ffbae9e3456b
 
 ---
 
-## 🛠️ How to Install
+# How to Play
 
-## 🎮 How to Play  
+## Controls
 
-1. Grab a friend and share the keyboard.  
-2. Watch the bubbles appear on your side of the screen.  
-3. Type the correct keys to pop them and add bubbles to your tea.  
-4. Avoid mistakes to keep your momentum.  
-5. First player to fill their cup wins!  
+### Player 1
+- **Bubble Keys:** `A`, `S`, `D`, `Z`, `X`, `C`
+- **Special Bubble Key:** `T`
 
----
+### Player 2
+- **Bubble Keys:** `U`, `I`, `O`, `J`, `K`, `L`
+- **Special Bubble Key:** `B`
+
+## Tips for Success
+
+- **Stay Alert:** Bubbles appear quickly, so keep your eyes on the screen.
+- **Be Accurate:** Incorrect key presses can cost you valuable bubbles.
+- **React Fast:** Special bubbles provide a big advantage, grab them before your opponent!
+- **Practice Makes Perfect:** Familiarize yourself with your assigned keys to improve your speed and precision.
+
+Good luck, and may the fastest fingers win!
 
 ## 👥 The Team
 
